@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+
+{{ wtf.quick_form(form) }}
+
+<div class="page-header"></div>
+
+<h2>Relação de ocorrências cadastradas</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Data</th>
+            <th>Disciplina</th>
+            <th>Descricao</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ocor in ocor_all %}
+        <tr>
+            <td>{{ ocor.date }}</td>
+            <td>{{ ocor.role.name }}</td>
+            <td>{{ ocor.descricao }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
